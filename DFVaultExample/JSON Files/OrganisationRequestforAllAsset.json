@@ -1,0 +1,22 @@
+{
+    "data" :     [
+            {
+        "_id" : "5bfd33cc05744f7b11fb0bf4",
+        "shared_with" : "5bfd33b905744f7b11fb0bf2",
+        "shared_with_name" : "Metacube",
+        "status" : "REQUESTED"
+            },
+            {
+                "_id" : "5bfd33cc05744f7b11fb0bf4",
+                "shared_with" : "5bfd33b905744f7b11fb0bf2",
+                "shared_with_name" : "Metacube",
+                "status" : "REQUESTED"
+            },
+            {
+                "_id" : "5bfd33cc05744f7b11fb0bf4",
+                "shared_with" : "5bfd33b905744f7b11fb0bf2",
+                "shared_with_name" : "Metacube",
+                "status" : "REQUESTED"
+            }
+    ]
+}

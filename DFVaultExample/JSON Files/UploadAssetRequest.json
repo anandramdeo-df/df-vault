@@ -1,0 +1,25 @@
+{
+    "data" :     [
+            {
+                "_id" : "5bfd32ef05744f7b11fb0bf0",
+                "asset_type" : "Passport",
+                "shared_with" : "5a1e4551b5c6b220f81e2f1a",
+                "shared_with_name" : "DataFornix",
+                "status" : "REQUESTED"
+            },
+            {
+                "_id" : "5bfd32ef05744f7b11fb0bf0",
+                "asset_type" : "Passport",
+                "shared_with" : "5a1e4551b5c6b220f81e2f1a",
+                "shared_with_name" : "DataFornix",
+                "status" : "REQUESTED"
+            },
+            {
+                "_id" : "5bfd32ef05744f7b11fb0bf0",
+                "asset_type" : "Passport",
+                "shared_with" : "5a1e4551b5c6b220f81e2f1a",
+                "shared_with_name" : "DataFornix",
+                "status" : "REQUESTED"
+            }
+    ]
+}

@@ -1,0 +1,26 @@
+
+{
+    "data" :     [
+        {
+        "_id" : "5bfd340705744f7b11fb0bf7",
+        "asset_id" : "5bda985605744f160b52411a",
+        "asset_type" : "Identity Card",
+        "shared_with" : "5bfd33b905744f7b11fb0bf2",
+        "shared_with_name" : "Metacube"
+        },
+        {
+            "_id" : "5bfd340705744f7b11fb0bf7",
+            "asset_id" : "5bda985605744f160b52411a",
+            "asset_type" : "Identity Card",
+            "shared_with" : "5bfd33b905744f7b11fb0bf2",
+            "shared_with_name" : "Metacube"
+        },
+        {
+            "_id" : "5bfd340705744f7b11fb0bf7",
+            "asset_id" : "5bda985605744f160b52411a",
+            "asset_type" : "Identity Card",
+            "shared_with" : "5bfd33b905744f7b11fb0bf2",
+            "shared_with_name" : "Metacube"
+        }
+    ]
+}
