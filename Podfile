@@ -6,9 +6,6 @@ target 'DFVaultExample' do
   use_frameworks!
 
   # Pods for DFVaultExample
-pod 'Alamofire'
-pod 'SwiftyJWT'
-pod 'CryptoSwift', '~> 0.9.0'
 pod 'DFDocument'
 
 end

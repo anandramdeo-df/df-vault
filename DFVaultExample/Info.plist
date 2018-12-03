@@ -7,8 +7,6 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
-	<key>VaultAccessToken</key>
-	<string>5bda985805744f160b52411b</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -31,6 +29,8 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Allow camera to open with &quot;Document Scanner&quot; mode</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
@@ -49,8 +49,8 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>DCAccessToken</key>
-	<string>5bda985805744f160b52411b</string>
-	<key>NSCameraUsageDescription</key>
-	<string>Allow camera to open with &quot;Document Scanner&quot; mode</string>
+	<string>&lt;Enter your access token&gt;</string>
+	<key>VaultAccessToken</key>
+	<string>&lt;Enter your access token&gt;</string>
 </dict>
 </plist>
