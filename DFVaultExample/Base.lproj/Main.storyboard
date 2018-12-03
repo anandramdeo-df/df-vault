@@ -175,6 +175,9 @@
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Amh-VD-eoI">
                                                         <rect key="frame" x="0.0" y="0.0" width="335" height="191.5"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="191.5" id="C2A-Y1-EAY"/>
+                                                        </constraints>
                                                     </imageView>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xe5-pI-123">
                                                         <rect key="frame" x="0.0" y="211.5" width="335" height="191.5"/>
@@ -227,7 +230,6 @@
                                             <constraint firstAttribute="trailing" secondItem="7f0-Ge-m5f" secondAttribute="trailing" constant="20" id="tse-k8-LgG"/>
                                             <constraint firstItem="KqV-3K-EJa" firstAttribute="top" secondItem="8fF-qM-OU8" secondAttribute="bottom" constant="16" id="uB3-j1-S5a"/>
                                             <constraint firstItem="7f0-Ge-m5f" firstAttribute="top" secondItem="SbC-KA-dDR" secondAttribute="top" constant="20" id="vm7-92-f4T"/>
-                                            <constraint firstAttribute="height" constant="647" id="wDV-6J-CTu"/>
                                             <constraint firstItem="8fF-qM-OU8" firstAttribute="top" secondItem="XRi-vn-5n9" secondAttribute="bottom" constant="16" id="ylE-ax-agr"/>
                                             <constraint firstItem="XRi-vn-5n9" firstAttribute="top" secondItem="7f0-Ge-m5f" secondAttribute="bottom" constant="10" id="yoV-69-OGm"/>
                                         </constraints>
