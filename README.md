@@ -1,12 +1,12 @@
 # df-Vault (DFVault SDK)
 
-This SDK is created to show varity of functionality 
-    - Gives you list of your all assets.
-    - Share any assets to some with his/her email address and upto a time period.
-    - Show all the assets that someone shared with you.
-    - Can access a centerlized list of your shared asset to any other.
-    - Gives you a list of all the access request. which you can grant or deny.
-
+This SDK provide you storage and sharing features in miscellaneous aspects: <br>
+    - Provided you the list of all your uploaded assets.<br>
+    - Provide access of any assets to person/ organisation with email address and upto a time period.<br>
+    - Show the list of assets those are shared to you. <br>
+    - Show the list of shared asset by you. <br>
+    - Provide you a list of access request(by any orgs or any person). which you can grant or deny.<br>
+    
 <b>You can achieve the functionality with easy integration of following steps:</b>
 
 - In a new terminal window, run `pod install --repo-update` to install and update. Get [Cocoapods](https://cocoapods.org/)
@@ -41,7 +41,25 @@ pod install
 - And instantiate the view with following code.
 
          // Open view with default configuration
-         
+        let vc = DFVault()
+        vc.type = .organizationUploadAllAssetRequestList
+        vc.userData = allAssetRequestData
+
+        vc.initialize(success: { [weak self] viewController in
+            DispatchQueue.main.async {
+                if let vc = viewController {
+                    self?.present(vc, animated: true, completion: nil)
+                }
+            }
+            }, failure: { (error) in
+                print(error?.userInfo ?? "Your api token is not valid")
+        })
+        vc.organizationRequestStatus = { assetData, status, datePeriod in
+            print(assetData)
+            print(status)
+            print(datePeriod)
+        }
+
 
 Output would be:
 <br>
@@ -58,33 +76,29 @@ Output would be:
 
 <i>Just access the properties mentioned in the SDK. Have a look at the sample below:</i>
 
-        let DFSAInstance = DFSelfieAuth.sharedInstance
-        DFSAInstance.globalBGColor = #colorLiteral(red: 0.9137254902, green: 0.3921568627, blue: 0.3647058824, alpha: 1)
-        DFSAInstance.globalMessagesColor = UIColor.white
-        DFSAInstance.globalTitleColor = UIColor.white
-        DFSAInstance.globalButtonCornerRadius = 5
-        DFSAInstance.globalOptionButtonColor = #colorLiteral(red: 0.9725490196, green: 0.9725490196, blue: 0.9725490196, alpha: 1)
-        DFSAInstance.globalTitleOptionButtonColor = #colorLiteral(red: 0.4039215686, green: 0.7098039216, blue: 0.3647058824, alpha: 1)
-        DFSAInstance.navigationTitleColor = #colorLiteral(red: 0.4039215686, green: 0.7098039216, blue: 0.3647058824, alpha: 1)
-        DFSAInstance.globalActioButtonColor = #colorLiteral(red: 0.4039215686, green: 0.7098039216, blue: 0.3647058824, alpha: 1)
-        DFSAInstance.globalTitleActionButtonColor = #colorLiteral(red: 0.9725490196, green: 0.9725490196, blue: 0.9725490196, alpha: 1)
-
-        DFSAInstance.tipGuidanceOne = "Tip : Please look straight and then blink eyes."
-        DFSAInstance.titlePermissionVC = "Please Allow camera permission."
-
-        DFSAInstance.initialize(success: { [weak self] viewController in
+        let vc = DFVault()
+        vc.type = .organizationUploadAllAssetRequestList
+        vc.userData = allAssetRequestData
+        vc.backgroundColor = #colorLiteral(red: 0.9137254902, green: 0.3921568627, blue: 0.3647058824, alpha: 1)
+        vc.navigationBarColor = #colorLiteral(red: 0.4039215686, green: 0.7098039216, blue: 0.3647058824, alpha: 1)
+        vc.navigationBarTintColor = UIColor.white
+        vc.navigationTitleColor = UIColor.white
+        vc.navigationTitle = "All asset"
+        vc.initialize(success: { [weak self] viewController in
             DispatchQueue.main.async {
                 if let vc = viewController {
                     self?.present(vc, animated: true, completion: nil)
                 }
             }
-        }, failure: { (error) in
-            print(error?.userInfo ?? "Your api token is not valid")
+            }, failure: { (error) in
+                print(error?.userInfo ?? "Your api token is not valid")
         })
-
-        DFSAInstance.returnClosure = { image in
-            self.selfieImageView.image = image
+        vc.organizationRequestStatus = { assetData, status, datePeriod in
+            print(assetData)
+            print(status)
+            print(datePeriod)
         }
+
 
 Updated UI output would be:
 <br>
@@ -99,83 +113,123 @@ Updated UI output would be:
   
 <h2>Here are the list of all the configurable properties, you may need:</h2>
 
-    /** This property change the background colour of the guidance screen. */
-    public var globalBGColor: UIColor
-
-    /** This property change the colour of the photo guidance button. */
-    public var globalActioButtonColor: UIColor
-
-    /** This property change the colour of the title of photo guidance button. */
-    public var globalTitleActionButtonColor: UIColor
-
-    /** This property change the corner radius of the photo guidance button. */
-    public var globalButtonCornerRadius: CGFloat
-
-    /** This property change the color of the cancle button, default is white */
-    public var globalOptionButtonColor: UIColor
-
-    /** This property change the colour of the title of photo guidance button. */
-    public var globalTitleOptionButtonColor: UIColor
-
-    /** This property change the color of the title of all the screens. */
-    public var globalTitleColor: UIColor
-
-    /** This property change the color of the messages of all the screens. */
-    public var globalMessagesColor: UIColor
-
-    /** This property change the color of the navigation bar. */
-    public var navigationTitleColor: UIColor
-
-    /** This property change the color of the navigation bar. */
-    public var navigationBarColor: UIColor
-
-    /** This property change the color of the border global button. */
-    public var globalBorderButtonColor: UIColor
-
-    /** This property change the color of the border global option button. */
-    public var globalOptionBorderButtonColor: UIColor
-
-    /** This property change the navigation title for first guidance view controller. */
-    public var titleNavGuidanceOne: String?
-
-    /** This property change the title message for first guidance view controller. */
-    public var messageGuidanceOne: String?
-
-    /** This property change the tip field on the first guidance view controller. */
-    public var tipGuidanceOne: String?
-
-    /** This property change the title of action button for first guidance view controller. */
-    public var actionTitleGuidanceOne: String?
-
-    /** This property change the title of cancle button for first guidance view controller. */
-    public var cancleTitleGuidanceOne: String?
-
-    /** This property change the navigation title for permission view controller. */
-    public var titleNavPermissionVC: String?
-
-    /** This property change the title for permission view controller. */
-    public var titlePermissionVC: String?
-
-    /** This property change the message for permission view controller. */
-    public var messagePermissionVC: String?
-
-    /** This property change the title of action button for permission view controller.  */
-    public var actionTitlePermissionVC: String?
-
-    /** This property change the title of cancle button for permission view controller.  */
-    public var cancleTitlePermissionVC: String?
-
-    /** This property change the title of action button for select selfie.  */
-    public var actionTitleSelectSelfieVC: String?
-
-    /** This property change the title of cancle button for permission view controller.  */
-    public var cancleTitleSelectSelfieVC: String?
-
-    /** This property changes the color for overlay view on capture-selfie screen.*/
-    public var overlayColor: UIColor
+   // MARK: - Global properties.
     
-    /** This property return the selfie image of the user. */
-    public var returnClosure: ((UIImage?) -> Void)?
+    /** This property change the color of the title of the navigation bar. */
+    public var navigationTitleColor: UIColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+    
+    /** This property change the color of the navigation bar. */
+    public var navigationBarColor: UIColor = UIColor.white
+    
+    /** This property chagne the text of the cancel button. */
+    public var navigationCancelButtonText: String = "Cancel"
+    
+    /** This property change the navigation bar tint color of */
+    public var navigationBarTintColor: UIColor = #colorLiteral(red: 0.1490196078, green: 0.5294117647, blue: 0.8745098039, alpha: 1)
+    
+    // MARK: - Share view controller properties.
+    
+    /** This property change the navigation title of */
+    public var navigationTitle: String?
+    
+    /** This property change the background color of the controller. */
+    public var backgroundColor: UIColor = #colorLiteral(red: 0.1490196078, green: 0.5294117647, blue: 0.8745098039, alpha: 1)
+    
+    /** This property change the button color in share view controller. */
+    public var buttonColor: UIColor = #colorLiteral(red: 0.9411764706, green: 0.9411764706, blue: 0.9411764706, alpha: 1)
+    
+    /** This property change the border width of the share view controller. */
+    public var buttonBorderWidth: CGFloat = 0
+    
+    /** This property change the border color of share view controller. */
+    public var buttonBorderColor: UIColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+    
+    /** This property change the corner radius of the button in share view controller. */
+    public var buttonCornerRadius: CGFloat = 5
+    
+    /** This property change the title of the button in share view controller. */
+    public var buttonTitle: String = "SHARE"
+    
+    /** This property change the title of the button in share view controller. */
+    public var buttonTitleColor: UIColor = #colorLiteral(red: 0.1490196078, green: 0.5294117647, blue: 0.8745098039, alpha: 1)
+    
+    /** This property change the text color of the share view controller. */
+    public var textColor: UIColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+    
+    /** This property change the corner radius of the text field and text views in share view controller. */
+    public var textfieldCornerRadius: CGFloat = 5
+    
+    /** This property change the border width of the text field and text views in share view controller. */
+    public var textfieldBorderWidth: CGFloat = 0.5
+    
+    /** This property change the border color of the text field and text views in share view controller. */
+    public var textfieldBorderolor: UIColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+    
+    /** This property show the share with admin field in share controller. */
+    public var adminEmail: String?
+    
+    // MARK: - TableCell configuration.
+    
+    /** This property change the background color of the cell */
+    public var cellColor: UIColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+    
+    /** This property change the color of heading of the cell. */
+    public var cellHeadingColor: UIColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+    
+    /** This property change the color of sub heading of the cell. */
+    public var cellSubHeadingColor: UIColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+
+    /** This property change the text color of the key. */
+    public var keyColor: UIColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+    
+    /** This property change the text color of the value. */
+    public var valueColor: UIColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+    
+    // Properties for allow and grant the request.
+    
+    /** This property change the color of the grant access button.*/
+    public var grantAccessColor: UIColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+    
+    /** This property change the color of the deny access button.*/
+    public var denyAccessColor: UIColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+    
+    /** This property change the title of the grant access button.*/
+    public var grantAccessTitle: String = "Grant"
+    
+    /** This property change the color of the deny access button.*/
+    public var denyAccessTitle: String = "Deny"
+    
+    /** This property change the color of revoke access button .*/
+    public var revokeAccessColor: UIColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+    
+    /** This property change the color of the edit button.*/
+    public var editButtonColor: UIColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
+    
+    /** This property change the title of the revoke access button.*/
+    public var revokeAccessTitle: String = "Revoke access"
+    
+    /** This property change the color of the edit button.*/
+    public var editAccessTitle: String = "Edit"
+    
+    /** This property change the color of the upload button. */
+    public var uploadButtonColor: UIColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+    
+    /** This property change the title of the upload button. */
+    public var uploadButtonTitle: String = "Upload"
+    
+    /** This property is enum type which you need to pass to open the controller accordingly. Default is .shareAsset */
+    public var type: viewControllers = .shareAsset
+    
+    /** This property take the user data which user want to show on the screen of the framework. */
+    public var userData = [String: Any]()
+    
+    /** These 3 property change the color of the grandiant view on all asset controller. */
+    public var gradiantStartColor: UIColor = #colorLiteral(red: 0.1490196078, green: 0.5294117647, blue: 0.8745098039, alpha: 1)
+    public var gradiantMidColor: UIColor = #colorLiteral(red: 0.1490196078, green: 0.5294117647, blue: 0.8745098039, alpha: 1)
+    public var gradiantEndColor: UIColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+    
+    public var leftBarImage: UIImage?
+
 
 <br>
 ---
