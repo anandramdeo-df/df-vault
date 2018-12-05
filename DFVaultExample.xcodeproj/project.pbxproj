@@ -215,16 +215,18 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-DFVaultExample/Pods-DFVaultExample-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-DFVaultExample/Pods-DFVaultExample-frameworks.sh",
 				"${PODS_ROOT}/DFDocument/DFDocument.framework",
+				"${PODS_ROOT}/DFVault/DFVault.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DFDocument.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DFVault.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DFVaultExample/Pods-DFVaultExample-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DFVaultExample/Pods-DFVaultExample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DD0EB35802A19D182616822C /* [CP] Check Pods Manifest.lock */ = {
