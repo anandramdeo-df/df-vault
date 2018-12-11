@@ -51,8 +51,8 @@ pod install
         }
 <br>
 
-1. Like in the below code snippet we are using `shareWithMe` controller type and you will get call back with `revokeData`, `assetID`, `newDate`. 
-instantiate the view with following code :-
+1. Like in the below code snippet we are using `shareWithMe` controller type and you will get call back with `revokeData`, `assetID`, `newDate`.  <br>
+Instantiate the view with following code :-
 
          // Open view with default configuration
          let shareByMe = DFVault()
@@ -134,13 +134,13 @@ Updated UI output would be:
 <br>
 <br>
 
-2. View Controller type `organizationUploadAssetRrequestList` you need to use `DFDocument` framework to capture the document which user want to upload. 
+2. For view type `organizationUploadAssetRrequestList` you need to use `DFDocument` framework to capture the document which user want to upload. 
 
     - When user click on upload button you will get the data in key value pair related to that organisation. 
     - Now you need to open the capture screen from DFDocument framework to capture the document and upload it on server by using API framework.
     - <i>For more details go to this link :-  <a>https://github.com/anandramdeo-df/df-documents</a></i>
     
-  <br><br>
+  <br>
   
 <h2>Here are the list of all the configurable properties, you may need:</h2>
 
