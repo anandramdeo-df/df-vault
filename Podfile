@@ -7,5 +7,6 @@ target 'DFVaultExample' do
 
   # Pods for DFVaultExample
 pod 'DFDocument'
+pod 'DFVault'
 
 end

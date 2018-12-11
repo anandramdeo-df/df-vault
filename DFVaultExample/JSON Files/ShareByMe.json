@@ -1,39 +1,39 @@
 {
-    "data" :     [
-        {
+"data" :     [
+    {
         "asset_id" : "5bda985605744f160b52411a",
         "asset_type" : "Identity Card",
         "properties" :
-                {
-                    "address" : "S/O: Prem Chand Jayaswal, 566, 566, Mally Banetha, Tonk, Rajasthan 304024",
-                    "birth_date" : "1992-07-19",
-                    "distance_from_geo_location" : "9229596.331344698",
-                    "files" :     [
-                        "http://192.168.10.32:8000/get-image/?file:5bda985405744f160b524110",
-                        "http://192.168.10.32:8000/get-image/?file:5bda985505744f160b524115"
-                        ],
-            "first_name" : "Ankit",
-            "gender" : "Male",
+        {
+            "address" : "19-20 Vihar Colony Dist: Jaipur, Raj. -",
+            "birth_date" : "1994-08-31",
+            "distance_from_geo_location" : "12297419.744715646",
+            "expiry_date" : "2035-03-03",
+            "files" :                 [
+                "http://qat.datafornix.com/get-image/?file=5bd2e183a920c4b053a5c1b5",
+                "http://qat.datafornix.com/get-image/?file=5bd2e184a920c4b053a5c1bb"
+            ],
+            "first_name" : "Kritika",
             "geo_address" : "Jaipur, Jaipur - 302001, Rajasthan, India",
-            "geo_latitude" : "26.778666455214523",
-            "geo_longitude" : "75.84149069364277",
-            "identity_number" : "3553 7502 9367",
-            "last_name" : "Jayaswal",
-            "latitude" : "75.58333",
-            "longitude" : "26.16667",
-            "middle_name" : "Kumar",
-            "nationality" : "India"
+            "geo_latitude" : "26.778544149326056",
+            "geo_longitude" : "75.84157027980591",
+            "issue_date" : "2015-03-04",
+            "last_name" : "Middha",
+            "latitude" : "22.33333",
+            "licence_number" : "RJ13 20150003495",
+            "longitude" : "46.23333",
+            "nationality" : "India",
         },
         "shared_with" :  [
-                {
-            "email" : "shubham.agarwal@ranosys.com",
-            "name" : "Shubham",
-            "reason" : "Testing the datafornix",
-            "shared_upto" : "2020-11-27",
-            "user_id" : "5bda97c105744f160b52410a"
-                }
+            {
+                "email" : "shubham.agarwal@ranosys.com",
+                "name" : "Shubham",
+                "reason" : "Testing the datafornix",
+                "shared_upto" : "2020-11-27",
+                "user_id" : "5bda97c105744f160b52410a"
+            }
         ],
         "verification_status" : "REJECTED"
     }
-    ]
+]
 }

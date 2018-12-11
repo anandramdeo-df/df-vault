@@ -17,7 +17,7 @@ Pod::Spec.new do |spec|
 
   spec.name         = "DFVault"
   spec.version      = "1.0"
-  spec.summary      = "This SDK is created to automatically capture the user's selfie using the facial expression( eye-blink in our case)."
+  spec.summary      = "This SDK is created to gives you storage and sharing feature for your uploaded assets."
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
@@ -25,7 +25,12 @@ Pod::Spec.new do |spec|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
 
-  spec.description  = "This SDK is created to automatically capture the user's selfie using the facial expression( eye-blink in our case). It will ensure that user have to be physically present while taking the selfie."
+  spec.description  = "This SDK provide you storage and sharing features in miscellaneous aspects:
+    - Provided you the list of all your uploaded assets.
+    - Provide access of any assets to person/ organisation with email address and upto a time period.
+    - Show the list of assets those are shared to you.
+    - Show the list of shared asset by you.
+    - Provide you a list of access request(by any orgs or any person). which you can grant or deny."
 
   spec.homepage     = "https://github.com/anandramdeo-df/df-vault"
   # spec.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
