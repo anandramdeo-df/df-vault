@@ -1,11 +1,11 @@
 # df-Vault (DFVault SDK)
 
-This SDK is created to show varity of functionality 
-    - Gives you list of your all assets.
-    - Share any assets to some with his/her email address and upto a time period.
-    - Show all the assets that someone shared with you.
-    - Can access a centerlized list of your shared asset to any other.
-    - Gives you a list of all the access request. which you can grant or deny.
+This SDK provide you storage and sharing features in miscellaneous aspects: <br>
+- Provided you the list of all your uploaded assets.<br>
+- Provide access of any assets to person/ organisation with email address and upto a time period.<br>
+- Show the list of assets those are shared to you. <br>
+- Show the list of shared asset by you. <br>
+- Provide you a list of access request(by any orgs or any person). which you can grant or deny.<br>
 
 <b>You can achieve the functionality with easy integration of following steps:</b>
 
