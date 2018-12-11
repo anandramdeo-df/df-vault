@@ -26,7 +26,7 @@ pod 'DFVault'
 ```
 pod install
 ```
-<i> If any error occure in the process of `pod install` then try with `pod update` command.
+<i> If any error occure in the process of `pod install` then try with `pod update` command. </i>
 <i> Now close the xcode project and open prj.xcworkspace instead. </i>
 
 
