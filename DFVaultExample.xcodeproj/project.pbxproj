@@ -15,6 +15,8 @@
 		152DE48621B012A100291B0C /* UploadAssetRequest.json in Resources */ = {isa = PBXBuildFile; fileRef = 152DE48521B012A100291B0C /* UploadAssetRequest.json */; };
 		152DE48821B0149700291B0C /* AssetVault.json in Resources */ = {isa = PBXBuildFile; fileRef = 152DE48721B0149700291B0C /* AssetVault.json */; };
 		283CFBD78A9E88E71CD8EEFA /* Pods_DFVaultExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A26D0CB98A8922F0979B1E6E /* Pods_DFVaultExample.framework */; };
+		4129BD1421CA664600311256 /* DFAPIFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4129BD1321CA664600311256 /* DFAPIFramework.framework */; };
+		4129BD1521CA664600311256 /* DFAPIFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4129BD1321CA664600311256 /* DFAPIFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4157684321AFAFA80062BCB7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4157684221AFAFA80062BCB7 /* AppDelegate.swift */; };
 		4157684521AFAFA80062BCB7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4157684421AFAFA80062BCB7 /* ViewController.swift */; };
 		4157684821AFAFA80062BCB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4157684621AFAFA80062BCB7 /* Main.storyboard */; };
@@ -24,12 +26,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		4157685721AFB6380062BCB7 /* Embed Frameworks */ = {
+		4129BD1621CA664600311256 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				4129BD1521CA664600311256 /* DFAPIFramework.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -45,6 +48,7 @@
 		152DE48121B010D600291B0C /* OrganisationRequestforAllAsset.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = OrganisationRequestforAllAsset.json; sourceTree = "<group>"; };
 		152DE48521B012A100291B0C /* UploadAssetRequest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UploadAssetRequest.json; sourceTree = "<group>"; };
 		152DE48721B0149700291B0C /* AssetVault.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = AssetVault.json; sourceTree = "<group>"; };
+		4129BD1321CA664600311256 /* DFAPIFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DFAPIFramework.framework; sourceTree = "<group>"; };
 		4157683F21AFAFA80062BCB7 /* DFVaultExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DFVaultExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4157684221AFAFA80062BCB7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4157684421AFAFA80062BCB7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4129BD1421CA664600311256 /* DFAPIFramework.framework in Frameworks */,
 				283CFBD78A9E88E71CD8EEFA /* Pods_DFVaultExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -93,6 +98,7 @@
 		4157683621AFAFA80062BCB7 = {
 			isa = PBXGroup;
 			children = (
+				4129BD1321CA664600311256 /* DFAPIFramework.framework */,
 				4157684121AFAFA80062BCB7 /* DFVaultExample */,
 				4157684021AFAFA80062BCB7 /* Products */,
 				3ECB4DFC895080E04B98F7A7 /* Frameworks */,
@@ -144,8 +150,8 @@
 				4157683B21AFAFA80062BCB7 /* Sources */,
 				4157683C21AFAFA80062BCB7 /* Frameworks */,
 				4157683D21AFAFA80062BCB7 /* Resources */,
-				4157685721AFB6380062BCB7 /* Embed Frameworks */,
 				13904333290695CA45B50C17 /* [CP] Embed Pods Frameworks */,
+				4129BD1621CA664600311256 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -215,18 +221,26 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DFVaultExample/Pods-DFVaultExample-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-DFVaultExample/Pods-DFVaultExample-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
 				"${PODS_ROOT}/DFDocument/DFDocument.framework",
 				"${PODS_ROOT}/DFVault/DFVault.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyCrypto/SwiftyCrypto.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJWT/SwiftyJWT.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DFDocument.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DFVault.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyCrypto.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJWT.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DFVaultExample/Pods-DFVaultExample-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DFVaultExample/Pods-DFVaultExample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DD0EB35802A19D182616822C /* [CP] Check Pods Manifest.lock */ = {
@@ -411,7 +425,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = DFVaultExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -435,7 +449,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = DFVaultExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

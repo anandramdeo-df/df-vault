@@ -8,5 +8,8 @@ target 'DFVaultExample' do
   # Pods for DFVaultExample
 pod 'DFDocument'
 pod 'DFVault'
+pod 'Alamofire'
+pod 'SwiftyJWT'
+pod 'CryptoSwift', '~> 0.9.0'
 
 end
