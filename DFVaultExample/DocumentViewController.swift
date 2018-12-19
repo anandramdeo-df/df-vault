@@ -8,6 +8,7 @@
 
 import UIKit
 import DFDocument
+import DFAPIFramework
 
 class DocumentViewController: UIViewController {
 
@@ -18,15 +19,50 @@ class DocumentViewController: UIViewController {
 
     var frontImage: UIImage?
     var backImage: UIImage?
+    var assetData: [String : Any]?
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
 //        self.openViewWithConfiguration()
 
-        frontImageView.image = frontImage ?? UIImage()
-        backImageView.image = backImage ?? UIImage()
+
+        if let uploadData = assetData {
+            frontImageView.image = frontImage ?? UIImage()
+            backImageView.image = backImage ?? UIImage()
+
+            var mediaArray = [MultipartDataModal]()
+            if let imageData = convertIntoData(image: frontImage!) {
+                mediaArray.append(MultipartDataModal.init(type: .image, fileName: "front_image", data: imageData))
+            }
+
+            if let img = backImage, let imageData = convertIntoData(image: img) {
+                mediaArray.append(MultipartDataModal.init(type: .image, fileName: "back_image", data: imageData))
+            }
+
+            let activityIndicator = UIView().showActivity()
+            self.view.addSubview(activityIndicator)
+
+            ConnectionManager.instance.getOCRResultFromImage(multipartDataArray: mediaArray, assetSubTypeName: uploadData["asset_type"] as! String, success: { (response) in
+                activityIndicator.removeFromSuperview()
+
+                let alert =  UIAlertController.init(title: "Success", message: "Your document has been uploaded successfully", preferredStyle: .alert)
+                let okAction = UIAlertAction.init(title: "Ok", style: .default, handler: nil)
+
+                alert.addAction(okAction)
+                self.navigationController?.present(alert, animated: true, completion: nil)
+            }, failure: { (error) in
+                activityIndicator.removeFromSuperview()
+
+            })
+
+        }
     }
-    
+
+    func convertIntoData(image: UIImage) -> Data? {
+        return image.jpegData(compressionQuality: 1.0)
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -56,7 +92,6 @@ class DocumentViewController: UIViewController {
             backImageView.image = image2
         }
         uploadButton.isHidden = false
-
     }
 
 }

@@ -168,25 +168,56 @@ class ViewController: UIViewController {
         OrganisationRequestforAsset.cellColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
         OrganisationRequestforAsset.cellSubHeadingColor = UIColor.black
         OrganisationRequestforAsset.cellHeadingColor = UIColor.black
-        OrganisationRequestforAsset.userData = self.getJsondata(filename: "OrganisationRequestforAsset")
         OrganisationRequestforAsset.grantAccessTitle = "Grant"
         OrganisationRequestforAsset.denyAccessTitle = "Deny"
         OrganisationRequestforAsset.grantAccessColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
         OrganisationRequestforAsset.denyAccessColor = UIColor.red
-        OrganisationRequestforAsset.initialize(success: { [weak self] viewController in
-            DispatchQueue.main.async {
-                if let vc = viewController {
-                    self?.present(vc, animated: true, completion: nil)
+
+        organisationRequestForAsset(success: { (responseObj) in
+            if let data = responseObj {
+                OrganisationRequestforAsset.userData = data //self.getJsondata(filename: "OrganisationRequestforAsset")
+                OrganisationRequestforAsset.initialize(success: { [weak self] viewController in
+                    DispatchQueue.main.async {
+                        if let vc = viewController {
+                            self?.present(vc, animated: true, completion: nil)
+                        }
+                    }
+                    }, failure: { (error) in
+                        print(error?.userInfo ?? "Your api token is not valid")
+                })
+
+                OrganisationRequestforAsset.organizationRequestStatus = { assetData, status, datePeriod in
+                    print(assetData)
+                    print(status)
+                    print(datePeriod)
+
+                    let activityIndicator = self.view.showActivity()
+                    self.view.addSubview(activityIndicator)
+
+                    self.uploadAccessOfAssetToOrganisation(id: assetData["_id"] as! String, sharedWith: assetData["shared_with"] as! String, assetId: assetData["asset_id"] as! String, timePeriod: datePeriod, status: status, success: { (responseObj) in
+                        activityIndicator.removeFromSuperview()
+
+                        if let response = responseObj as? [String: Any], let data = response.first?.value as? String {
+
+                            let alert =  UIAlertController.init(title: "Success", message: data, preferredStyle: .alert)
+                            let okAction = UIAlertAction.init(title: "Ok", style: .default, handler: nil)
+
+                            alert.addAction(okAction)
+                            self.navigationController?.present(alert, animated: true, completion: nil)
+                        }
+
+
+                    }, failure: { (error) in
+                        activityIndicator.removeFromSuperview()
+
+                        print(error as Any)
+                    })
                 }
             }
-            }, failure: { (error) in
-                print(error?.userInfo ?? "Your api token is not valid")
+
+        }, failure: { (error) in
+            print(error as Any)
         })
-        OrganisationRequestforAsset.organizationRequestStatus = { assetData, status, datePeriod in
-            print(assetData)
-            print(status)
-            print(datePeriod)
-        }
     }
 
     @IBAction func UploadAssetRequest (_ sender: Any) {
@@ -196,31 +227,39 @@ class ViewController: UIViewController {
         UploadAssetRequest.navigationBarColor = #colorLiteral(red: 0.4039215686, green: 0.7098039216, blue: 0.3647058824, alpha: 1)
         UploadAssetRequest.navigationTitleColor = UIColor.white
         UploadAssetRequest.navigationBarTintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-       
+
         UploadAssetRequest.cellColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
-        UploadAssetRequest.userData = self.getJsondata(filename: "UploadAssetRequest")
         UploadAssetRequest.cellSubHeadingColor = UIColor.black
         UploadAssetRequest.cellHeadingColor = UIColor.black
         UploadAssetRequest.uploadButtonColor = UIColor.blue
         UploadAssetRequest.uploadButtonTitle = "Upload"
-        UploadAssetRequest.initialize(success: { [weak self] viewController in
-            DispatchQueue.main.async {
-                if let vc = viewController {
-                    self?.present(vc, animated: true, completion: nil)
+        organisationRequestForUploadAsset(success: { (responseObj) in
+            if let data = responseObj {
+                UploadAssetRequest.userData = data //self.getJsondata(filename: "UploadAssetRequest")
+                UploadAssetRequest.initialize(success: { [weak self] viewController in
+                    DispatchQueue.main.async {
+                        if let vc = viewController {
+                            self?.present(vc, animated: true, completion: nil)
+                        }
+                    }
+                    }, failure: { (error) in
+                        print(error?.userInfo ?? "Your api token is not valid")
+                })
+
+
+                UploadAssetRequest.organizationRequestStatus = { assetData, status, _ in
+                    print(assetData)
+                    print(status)
+
+                    self.unlockDFDocument(completionHandler: {[weak self] frontImage, backImage in
+                        self?.navigateToDocVC(image1: frontImage, image2: backImage, assetData: assetData)
+                    })
                 }
             }
-            }, failure: { (error) in
-                print(error?.userInfo ?? "Your api token is not valid")
-        })
-        
-        UploadAssetRequest.organizationRequestStatus = { assetData, status, _ in
-            print(assetData)
-            print(status)
 
-            self.unlockDFDocument(completionHandler: {[weak self] frontImage, backImage in
-                self?.navigateToDocVC(image1: frontImage, image2: backImage)
-            })
-        }
+        }, failure: { (error) in
+            print(error as Any)
+        })
     }
 
     @IBAction func OrganisationRequestforAllAsset(_ sender: Any) {
@@ -252,10 +291,11 @@ class ViewController: UIViewController {
         }
     }
 
-    func navigateToDocVC(image1: UIImage, image2: UIImage?) {
+    func navigateToDocVC(image1: UIImage, image2: UIImage?, assetData: [String: Any]) {
         guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "DocumentViewController") as? DocumentViewController else {return}
         vc.frontImage = image1
         vc.backImage = image2
+        vc.assetData = assetData
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -279,5 +319,19 @@ extension UIViewController {
             completionHandler(frontImage,backImage)
             self?.dismiss(animated: true, completion: nil)
         }
+    }
+}
+extension UIView {
+    func showActivity() -> UIView {
+        let view = UIView()
+        view.frame = UIScreen.main.bounds
+        view.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 0.6091496394)
+
+        let activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
+        activityIndicator.frame = view.bounds
+        activityIndicator.startAnimating()
+
+        view.addSubview(activityIndicator)
+        return view
     }
 }
