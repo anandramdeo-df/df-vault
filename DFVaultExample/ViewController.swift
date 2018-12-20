@@ -172,6 +172,7 @@ class ViewController: UIViewController {
                     }, failure: { (error) in
                         print(error?.userInfo ?? "Your api token is not valid")
                 })
+
                 shareByMe.revokeEditAccessStatus = {revokeData, assetID, newDate in
                     
                     print(revokeData)
@@ -202,24 +203,24 @@ class ViewController: UIViewController {
     }
 
     @IBAction func OrganisationRequestforAsset(_ sender: Any) {
-        let OrganisationRequestforAsset = DFVault()
-        OrganisationRequestforAsset.type = .organizationRequesetedAssetList
-        OrganisationRequestforAsset.backgroundColor = #colorLiteral(red: 0.9137254902, green: 0.3921568627, blue: 0.3647058824, alpha: 1)
-        OrganisationRequestforAsset.navigationBarColor = #colorLiteral(red: 0.4039215686, green: 0.7098039216, blue: 0.3647058824, alpha: 1)
-        OrganisationRequestforAsset.navigationTitleColor = UIColor.white
-        OrganisationRequestforAsset.navigationBarTintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        
-        OrganisationRequestforAsset.cellColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
-        OrganisationRequestforAsset.cellSubHeadingColor = UIColor.black
-        OrganisationRequestforAsset.cellHeadingColor = UIColor.black
-        OrganisationRequestforAsset.grantAccessTitle = "Grant"
-        OrganisationRequestforAsset.denyAccessTitle = "Deny"
-        OrganisationRequestforAsset.grantAccessColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
-        OrganisationRequestforAsset.denyAccessColor = UIColor.red
+        ConnectionManager.instance.organisationRequestForAsset(success: { (response) in
+            if let responseObj = response as? [String: Any] {
 
-        organisationRequestForAsset(success: { (responseObj) in
-            if let data = responseObj {
-                OrganisationRequestforAsset.userData = data //self.getJsondata(filename: "OrganisationRequestforAsset")
+                let OrganisationRequestforAsset = DFVault()
+                OrganisationRequestforAsset.type = .organizationRequesetedAssetList
+                OrganisationRequestforAsset.backgroundColor = #colorLiteral(red: 0.9137254902, green: 0.3921568627, blue: 0.3647058824, alpha: 1)
+                OrganisationRequestforAsset.navigationBarColor = #colorLiteral(red: 0.4039215686, green: 0.7098039216, blue: 0.3647058824, alpha: 1)
+                OrganisationRequestforAsset.navigationTitleColor = UIColor.white
+                OrganisationRequestforAsset.navigationBarTintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+
+                OrganisationRequestforAsset.cellColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
+                OrganisationRequestforAsset.cellSubHeadingColor = UIColor.black
+                OrganisationRequestforAsset.cellHeadingColor = UIColor.black
+                OrganisationRequestforAsset.grantAccessTitle = "Grant"
+                OrganisationRequestforAsset.denyAccessTitle = "Deny"
+                OrganisationRequestforAsset.grantAccessColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
+                OrganisationRequestforAsset.denyAccessColor = UIColor.red
+                OrganisationRequestforAsset.userData = responseObj //self.getJsondata(filename: "OrganisationRequestforAsset")
                 OrganisationRequestforAsset.initialize(success: { [weak self] viewController in
                     DispatchQueue.main.async {
                         if let vc = viewController {
@@ -262,64 +263,70 @@ class ViewController: UIViewController {
         }, failure: { (error) in
             print(error as Any)
         })
-    }
 
-    @IBAction func UploadAssetRequest (_ sender: Any) {
-        let UploadAssetRequest = DFVault()
-        UploadAssetRequest.type = .organizationUploadAssetRrequestList
-        UploadAssetRequest.backgroundColor = #colorLiteral(red: 0.9137254902, green: 0.3921568627, blue: 0.3647058824, alpha: 1)
-        UploadAssetRequest.navigationBarColor = #colorLiteral(red: 0.4039215686, green: 0.7098039216, blue: 0.3647058824, alpha: 1)
-        UploadAssetRequest.navigationTitleColor = UIColor.white
-        UploadAssetRequest.navigationBarTintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-
-        UploadAssetRequest.cellColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
-        UploadAssetRequest.cellSubHeadingColor = UIColor.black
-        UploadAssetRequest.cellHeadingColor = UIColor.black
-        UploadAssetRequest.uploadButtonColor = UIColor.blue
-        UploadAssetRequest.uploadButtonTitle = "Upload"
-        organisationRequestForUploadAsset(success: { (responseObj) in
-            if let data = responseObj {
-                UploadAssetRequest.userData = data //self.getJsondata(filename: "UploadAssetRequest")
-                UploadAssetRequest.initialize(success: { [weak self] viewController in
-                    DispatchQueue.main.async {
-                        if let vc = viewController {
-                            self?.present(vc, animated: true, completion: nil)
-                        }
-                    }
-                    }, failure: { (error) in
-                        print(error?.userInfo ?? "Your api token is not valid")
-                })
-
-                UploadAssetRequest.organizationRequestStatus = { assetData, status, _ in
-                    print(assetData)
-                    print(status)
-
-                    self.unlockDFDocument(completionHandler: {[weak self] frontImage, backImage in
-                        self?.navigateToDocVC(image1: frontImage, image2: backImage, assetData: assetData)
-                    })
-                }
-            }
-
-        }, failure: { (error) in
-            print(error as Any)
-        })
+//        organisationRequestForAsset(success: { (responseObj) in
+//            if let data = responseObj {
+//                OrganisationRequestforAsset.userData = data //self.getJsondata(filename: "OrganisationRequestforAsset")
+//                OrganisationRequestforAsset.initialize(success: { [weak self] viewController in
+//                    DispatchQueue.main.async {
+//                        if let vc = viewController {
+//                            self?.present(vc, animated: true, completion: nil)
+//                        }
+//                    }
+//                    }, failure: { (error) in
+//                        print(error?.userInfo ?? "Your api token is not valid")
+//                })
+//
+//                OrganisationRequestforAsset.organizationRequestStatus = { assetData, status, datePeriod in
+//                    print(assetData)
+//                    print(status)
+//                    print(datePeriod)
+//
+//                    let activityIndicator = self.view.showActivity()
+//                    self.view.addSubview(activityIndicator)
+//
+//                    self.uploadAccessOfAssetToOrganisation(id: assetData["_id"] as! String, sharedWith: assetData["shared_with"] as! String, assetId: assetData["asset_id"] as! String, timePeriod: datePeriod, status: status, success: { (responseObj) in
+//                        activityIndicator.removeFromSuperview()
+//
+//                        if let response = responseObj as? [String: Any], let data = response.first?.value as? String {
+//
+//                            let alert =  UIAlertController.init(title: "Success", message: data, preferredStyle: .alert)
+//                            let okAction = UIAlertAction.init(title: "Ok", style: .default, handler: nil)
+//
+//                            alert.addAction(okAction)
+//                            self.navigationController?.present(alert, animated: true, completion: nil)
+//                        }
+//
+//
+//                    }, failure: { (error) in
+//                        activityIndicator.removeFromSuperview()
+//
+//                        print(error as Any)
+//                    })
+//                }
+//            }
+//
+//        }, failure: { (error) in
+//            print(error as Any)
+//        })
     }
 
     @IBAction func OrganisationRequestforAllAsset(_ sender: Any) {
-        let OrganisationRequestforAllAsset = DFVault()
-        OrganisationRequestforAllAsset.type = .organizationUploadAllAssetRequestList
-        OrganisationRequestforAllAsset.backgroundColor = #colorLiteral(red: 0.9137254902, green: 0.3921568627, blue: 0.3647058824, alpha: 1)
-        OrganisationRequestforAllAsset.navigationBarColor = #colorLiteral(red: 0.4039215686, green: 0.7098039216, blue: 0.3647058824, alpha: 1)
-        OrganisationRequestforAllAsset.navigationTitleColor = UIColor.white
-        OrganisationRequestforAllAsset.navigationBarTintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        
-        OrganisationRequestforAllAsset.cellColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
-        OrganisationRequestforAllAsset.grantAccessColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
-        OrganisationRequestforAllAsset.denyAccessColor = UIColor.red
-        OrganisationRequestforAllAsset.navigationTitle = "All asset"
-        organisationRequestForAllUserAssetsByEmail(success: { (responseObj) in
-            if let data = responseObj {
-                OrganisationRequestforAllAsset.userData = data// self.getJsondata(filename: "OrganisationRequestforAllAsset")
+        ConnectionManager.instance.organisationRequestForAllUserAssetsByEmail(success: { response in
+            if let responseObj = response as? [String: Any] {
+
+                let OrganisationRequestforAllAsset = DFVault()
+                OrganisationRequestforAllAsset.type = .organizationUploadAllAssetRequestList
+                OrganisationRequestforAllAsset.backgroundColor = #colorLiteral(red: 0.9137254902, green: 0.3921568627, blue: 0.3647058824, alpha: 1)
+                OrganisationRequestforAllAsset.navigationBarColor = #colorLiteral(red: 0.4039215686, green: 0.7098039216, blue: 0.3647058824, alpha: 1)
+                OrganisationRequestforAllAsset.navigationTitleColor = UIColor.white
+                OrganisationRequestforAllAsset.navigationBarTintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                
+                OrganisationRequestforAllAsset.cellColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
+                OrganisationRequestforAllAsset.grantAccessColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
+                OrganisationRequestforAllAsset.denyAccessColor = UIColor.red
+                OrganisationRequestforAllAsset.navigationTitle = "All asset"
+                OrganisationRequestforAllAsset.userData = responseObj// self.getJsondata(filename: "OrganisationRequestforAllAsset")
                 OrganisationRequestforAllAsset.initialize(success: { [weak self] viewController in
                     DispatchQueue.main.async {
                         if let vc = viewController {
@@ -341,6 +348,47 @@ class ViewController: UIViewController {
                     })
                 }
             }
+        }, failure: { (error) in
+            print(error as Any)
+        })
+    }
+
+    @IBAction func UploadAssetRequest (_ sender: Any) {
+        ConnectionManager.instance.organisationRequestForUploadAsset(success: { (responseObj) in
+            if let data = responseObj as? [String: Any] {
+                let UploadAssetRequest = DFVault()
+                UploadAssetRequest.type = .organizationUploadAssetRrequestList
+                UploadAssetRequest.backgroundColor = #colorLiteral(red: 0.9137254902, green: 0.3921568627, blue: 0.3647058824, alpha: 1)
+                UploadAssetRequest.navigationBarColor = #colorLiteral(red: 0.4039215686, green: 0.7098039216, blue: 0.3647058824, alpha: 1)
+                UploadAssetRequest.navigationTitleColor = UIColor.white
+                UploadAssetRequest.navigationBarTintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                
+                UploadAssetRequest.cellColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
+                UploadAssetRequest.cellSubHeadingColor = UIColor.black
+                UploadAssetRequest.cellHeadingColor = UIColor.black
+                UploadAssetRequest.uploadButtonColor = UIColor.blue
+                UploadAssetRequest.uploadButtonTitle = "Upload"
+                UploadAssetRequest.userData = data //self.getJsondata(filename: "UploadAssetRequest")
+                UploadAssetRequest.initialize(success: { [weak self] viewController in
+                    DispatchQueue.main.async {
+                        if let vc = viewController {
+                            self?.present(vc, animated: true, completion: nil)
+                        }
+                    }
+                    }, failure: { (error) in
+                        print(error?.userInfo ?? "Your api token is not valid")
+                })
+
+                UploadAssetRequest.organizationRequestStatus = { assetData, status, _ in
+                    print(assetData)
+                    print(status)
+
+                    self.unlockDFDocument(completionHandler: {[weak self] frontImage, backImage in
+                        self?.navigateToDocVC(image1: frontImage, image2: backImage, assetData: assetData)
+                    })
+                }
+            }
+
         }, failure: { (error) in
             print(error as Any)
         })
@@ -387,57 +435,35 @@ extension ViewController {
         })
     }
     
-    func organisationRequestForAsset(success: @escaping (( _ responseObject: [String: Any]?) -> Void), failure: @escaping (( _ error: NSError?) -> Void)) {
-            ConnectionManager.instance.organisationRequestForAsset(success: { (response) in
-                let responseObj = response as? [String: Any]
-                success(responseObj)
-            }, failure: { (error) in
-                failure(error)
-            })
-        }
-        
-    func organisationRequestForAllUserAssetsByEmail(success: @escaping (( _ responseObject: [String: Any]?) -> Void), failure: @escaping (( _ error: NSError?) -> Void)) {
-            ConnectionManager.instance.organisationRequestForAllUserAssetsByEmail(success: { response in
-                let responseObj = response as? [String: Any]
-                success(responseObj)
-            }, failure: failure)
-        }
-        
-    func organisationRequestForUploadAsset(success: @escaping ((_ responseObject: [String: Any]?) -> Void), failure: @escaping (( _ error: NSError?) -> Void)) {
-            ConnectionManager.instance.organisationRequestForUploadAsset(success: { response in
-                let responseObj = response as? [String: Any]
-                success(responseObj)
-            }, failure: failure)
-        }
-        
-        func uploadAccessOfAssetToOrganisation(id: String, sharedWith: String, assetId: String, timePeriod: String, status: String, success: @escaping ((_ responseObject: Any?) -> Void), failure: @escaping ((_ error: NSError?) -> Void)) {
-            ConnectionManager.instance.uploadAccessOfAssetToOrganisation(id: id, sharedWith: sharedWith, assetId: assetId, timePeriod: timePeriod, status: status, success: success, failure: failure)
-        }
-        
-        func uploadAccessOfAllAssetByEmailToOrganisation(identifier: String,
-                                                         status: String,
-                                                         id: String,
-                                                         timePeriod: String,
-                                                         success: @escaping ((_ responseObject: AnyObject?) -> Void),
-                                                         failure: @escaping ((_ error: NSError?) -> Void)) {
-            ConnectionManager.instance.uploadAccessOfAllAssetByEmailToOrganisation(identifier: identifier, status: status, id: id, timePeriod: timePeriod, success: success, failure: failure)
-        }
-        
-        func grantAccessOfUploadedAsset(identifier: String,
-                                        assetType: String,
-                                        status: String,
-                                        id: String,
-                                        success: @escaping ((_ responseObject: AnyObject?) -> Void),
-                                        failure: @escaping ((_ error: NSError?) -> Void)) {
-            ConnectionManager.instance.grantAccessOfUploadedAsset(identifier: identifier, assetType: assetType, status: status, id: id, success: success, failure: failure)
-        }
+
+    func uploadAccessOfAssetToOrganisation(id: String, sharedWith: String, assetId: String, timePeriod: String, status: String, success: @escaping ((_ responseObject: Any?) -> Void), failure: @escaping ((_ error: NSError?) -> Void)) {
+        ConnectionManager.instance.uploadAccessOfAssetToOrganisation(id: id, sharedWith: sharedWith, assetId: assetId, timePeriod: timePeriod, status: status, success: success, failure: failure)
+    }
+
+    func uploadAccessOfAllAssetByEmailToOrganisation(identifier: String,
+                                                     status: String,
+                                                     id: String,
+                                                     timePeriod: String,
+                                                     success: @escaping ((_ responseObject: AnyObject?) -> Void),
+                                                     failure: @escaping ((_ error: NSError?) -> Void)) {
+        ConnectionManager.instance.uploadAccessOfAllAssetByEmailToOrganisation(identifier: identifier, status: status, id: id, timePeriod: timePeriod, success: success, failure: failure)
+    }
+
+    func grantAccessOfUploadedAsset(identifier: String,
+                                    assetType: String,
+                                    status: String,
+                                    id: String,
+                                    success: @escaping ((_ responseObject: AnyObject?) -> Void),
+                                    failure: @escaping ((_ error: NSError?) -> Void)) {
+        ConnectionManager.instance.grantAccessOfUploadedAsset(identifier: identifier, assetType: assetType, status: status, id: id, success: success, failure: failure)
+    }
 }
 
 extension UIView {
     func showActivity() -> UIView {
         let view = UIView()
         view.frame = UIScreen.main.bounds
-        view.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 0.6091496394)
+        view.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 0.2977514022)
 
         let activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
         activityIndicator.frame = view.bounds
