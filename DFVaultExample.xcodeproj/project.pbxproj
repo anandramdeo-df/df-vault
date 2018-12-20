@@ -15,24 +15,25 @@
 		152DE48621B012A100291B0C /* UploadAssetRequest.json in Resources */ = {isa = PBXBuildFile; fileRef = 152DE48521B012A100291B0C /* UploadAssetRequest.json */; };
 		152DE48821B0149700291B0C /* AssetVault.json in Resources */ = {isa = PBXBuildFile; fileRef = 152DE48721B0149700291B0C /* AssetVault.json */; };
 		283CFBD78A9E88E71CD8EEFA /* Pods_DFVaultExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A26D0CB98A8922F0979B1E6E /* Pods_DFVaultExample.framework */; };
-		4129BD1421CA664600311256 /* DFAPIFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4129BD1321CA664600311256 /* DFAPIFramework.framework */; };
-		4129BD1521CA664600311256 /* DFAPIFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4129BD1321CA664600311256 /* DFAPIFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4129BD1C21CA761A00311256 /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4129BD1B21CA761A00311256 /* UIImage+Resize.swift */; };
 		4157684321AFAFA80062BCB7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4157684221AFAFA80062BCB7 /* AppDelegate.swift */; };
 		4157684521AFAFA80062BCB7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4157684421AFAFA80062BCB7 /* ViewController.swift */; };
 		4157684821AFAFA80062BCB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4157684621AFAFA80062BCB7 /* Main.storyboard */; };
 		4157684A21AFAFAA0062BCB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4157684921AFAFAA0062BCB7 /* Assets.xcassets */; };
 		4157684D21AFAFAA0062BCB7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4157684B21AFAFAA0062BCB7 /* LaunchScreen.storyboard */; };
 		41A83F3821B10F560082C5A9 /* DocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A83F3721B10F560082C5A9 /* DocumentViewController.swift */; };
+		41AFC25F21CB5E0400BAA99A /* DFAPIFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41AFC25E21CB5E0400BAA99A /* DFAPIFramework.framework */; };
+		41AFC26021CB5E0400BAA99A /* DFAPIFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 41AFC25E21CB5E0400BAA99A /* DFAPIFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		4129BD1621CA664600311256 /* Embed Frameworks */ = {
+		41AFC26121CB5E0500BAA99A /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				4129BD1521CA664600311256 /* DFAPIFramework.framework in Embed Frameworks */,
+				41AFC26021CB5E0400BAA99A /* DFAPIFramework.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -48,7 +49,7 @@
 		152DE48121B010D600291B0C /* OrganisationRequestforAllAsset.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = OrganisationRequestforAllAsset.json; sourceTree = "<group>"; };
 		152DE48521B012A100291B0C /* UploadAssetRequest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UploadAssetRequest.json; sourceTree = "<group>"; };
 		152DE48721B0149700291B0C /* AssetVault.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = AssetVault.json; sourceTree = "<group>"; };
-		4129BD1321CA664600311256 /* DFAPIFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DFAPIFramework.framework; sourceTree = "<group>"; };
+		4129BD1B21CA761A00311256 /* UIImage+Resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
 		4157683F21AFAFA80062BCB7 /* DFVaultExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DFVaultExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4157684221AFAFA80062BCB7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4157684421AFAFA80062BCB7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +58,7 @@
 		4157684C21AFAFAA0062BCB7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4157684E21AFAFAA0062BCB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41A83F3721B10F560082C5A9 /* DocumentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentViewController.swift; sourceTree = "<group>"; };
+		41AFC25E21CB5E0400BAA99A /* DFAPIFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DFAPIFramework.framework; sourceTree = "<group>"; };
 		A26D0CB98A8922F0979B1E6E /* Pods_DFVaultExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DFVaultExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEE9701BF8FB1FDB1C648D21 /* Pods-DFVaultExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DFVaultExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DFVaultExample/Pods-DFVaultExample.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -66,7 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4129BD1421CA664600311256 /* DFAPIFramework.framework in Frameworks */,
+				41AFC25F21CB5E0400BAA99A /* DFAPIFramework.framework in Frameworks */,
 				283CFBD78A9E88E71CD8EEFA /* Pods_DFVaultExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -98,7 +100,7 @@
 		4157683621AFAFA80062BCB7 = {
 			isa = PBXGroup;
 			children = (
-				4129BD1321CA664600311256 /* DFAPIFramework.framework */,
+				41AFC25E21CB5E0400BAA99A /* DFAPIFramework.framework */,
 				4157684121AFAFA80062BCB7 /* DFVaultExample */,
 				4157684021AFAFA80062BCB7 /* Products */,
 				3ECB4DFC895080E04B98F7A7 /* Frameworks */,
@@ -118,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				152DE47E21B00DC100291B0C /* JSON Files */,
+				4129BD1B21CA761A00311256 /* UIImage+Resize.swift */,
 				4157684221AFAFA80062BCB7 /* AppDelegate.swift */,
 				4157684421AFAFA80062BCB7 /* ViewController.swift */,
 				41A83F3721B10F560082C5A9 /* DocumentViewController.swift */,
@@ -151,7 +154,7 @@
 				4157683C21AFAFA80062BCB7 /* Frameworks */,
 				4157683D21AFAFA80062BCB7 /* Resources */,
 				13904333290695CA45B50C17 /* [CP] Embed Pods Frameworks */,
-				4129BD1621CA664600311256 /* Embed Frameworks */,
+				41AFC26121CB5E0500BAA99A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -270,6 +273,7 @@
 			files = (
 				4157684521AFAFA80062BCB7 /* ViewController.swift in Sources */,
 				41A83F3821B10F560082C5A9 /* DocumentViewController.swift in Sources */,
+				4129BD1C21CA761A00311256 /* UIImage+Resize.swift in Sources */,
 				4157684321AFAFA80062BCB7 /* AppDelegate.swift in Sources */,
 				152DE47B21B0063900291B0C /* JSONParser.swift in Sources */,
 			);

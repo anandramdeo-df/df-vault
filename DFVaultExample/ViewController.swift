@@ -177,16 +177,16 @@ class ViewController: UIViewController {
                     print(revokeData)
                     print(assetID)
                     print(newDate)
-                    if let sharedWith = revokeData["email"] as? String, let sharedUpto = revokeData["shared_upto"] as? String, let userId = revokeData["user_id"] as? String {
+                    if let sharedUpto = revokeData["shared_upto"] as? String, let userId = revokeData["user_id"] as? String, let keeperId = revokeData["_id"] as? String {
                         
                         if sharedUpto == newDate {
-                            ConnectionManager.instance.revokeAccessOfAssetToOrganisation(assetId: assetID, sharedWith: sharedWith, success: { (success) in
+                            ConnectionManager.instance.revokeAccessOfAssetToOrganisation(assetId: assetID, sharedWith: userId, success: { (success) in
                                 print(success)
                             }, failure: { (error) in
                                 print(error)
                             })
                         } else {
-                            ConnectionManager.instance.editSharingTime(assetId: assetID, newTime: newDate, id: userId, success: { (response) in
+                            ConnectionManager.instance.editSharingTime(assetId: assetID, newTime: newDate, keeperId: keeperId, id: userId, success: { (response) in
                                 print(response)
                             }, failure: { (error) in
                                 print(error)
@@ -290,7 +290,6 @@ class ViewController: UIViewController {
                         print(error?.userInfo ?? "Your api token is not valid")
                 })
 
-
                 UploadAssetRequest.organizationRequestStatus = { assetData, status, _ in
                     print(assetData)
                     print(status)
@@ -388,8 +387,6 @@ extension ViewController {
         })
     }
     
-    
-        
     func organisationRequestForAsset(success: @escaping (( _ responseObject: [String: Any]?) -> Void), failure: @escaping (( _ error: NSError?) -> Void)) {
             ConnectionManager.instance.organisationRequestForAsset(success: { (response) in
                 let responseObj = response as? [String: Any]
