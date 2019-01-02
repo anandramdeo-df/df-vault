@@ -26,7 +26,6 @@ class DocumentViewController: UIViewController {
         super.viewDidLoad()
 //        self.openViewWithConfiguration()
 
-
         if let uploadData = assetData {
             frontImageView.image = frontImage ?? UIImage()
             backImageView.image = backImage ?? UIImage()
@@ -50,12 +49,6 @@ class DocumentViewController: UIViewController {
                 if let responseObj = response as? [String: Any] {
                     self.requestForPostScannedData(parameters: responseObj, assetData: uploadData)
                 }
-//                let alert =  UIAlertController.init(title: "Success", message: "Your document has been uploaded successfully", preferredStyle: .alert)
-//                let okAction = UIAlertAction.init(title: "Ok", style: .default, handler: {
-//                })
-//
-//                alert.addAction(okAction)
-//                self.navigationController?.present(alert, animated: true, completion: nil)
             }, failure: { (error) in
                 activityIndicator.removeFromSuperview()
 
@@ -72,14 +65,18 @@ class DocumentViewController: UIViewController {
             par["geo_longitude"] = "75.84157027980591" as AnyObject
             par["asset_type"] = assetType
             par["is_right_to_work"] = false as AnyObject
-/*              let p = ["nationality": "Vietnam", "last_name": "Hạnh", "birth_date": "1986-04-26", "first_name": "Nguyễn", "asset_type": "Identity Card", "address": "178 Phố Chợ Khâm Thiên Trung Phụng, Đống Đa, Hà Nội", "identity_number": "000186000015", "middle_name": "Đức", "gender": "Female", "expiry_date": "2030-01-07", "is_right_to_work": "0", "geo_latitude": "13.4578945", "geo_longitude": "45.123452"] as [String: AnyObject]
-             
-             param: Optional(["nationality": United Kingdom, "geo_longitude": 75.84142126420033, "last_name": Specimen, "passport_number": 605100803, "is_right_to_work": 0, "first_name": A, "birth_date": 1950-01-01, "asset_type": Passport, "expiry_date": 2017-01-24, "geo_latitude": 26.77838545008835, "gender": Male, "timezone": Asia/Kolkata])
- */
+
             ConnectionManager.instance.addUpdateAssetDetail(assetSubTypeParent: "identity", assetDetailId: nil, parametersDict: par as [String : AnyObject], success: { response in
                 
                 if let successMessage = response?.value(forKey: "message") as? String {
                     print(successMessage)
+
+                    let alert =  UIAlertController.init(title: "Success", message: successMessage, preferredStyle: .alert)
+                    let okAction = UIAlertAction.init(title: "Ok", style: .default, handler: nil)
+
+                    alert.addAction(okAction)
+                    self.navigationController?.present(alert, animated: true, completion: nil)
+
                 }
             }, failure: { error in
                 
@@ -89,10 +86,6 @@ class DocumentViewController: UIViewController {
                 print("Error: \(error?.localizedDescription ?? "error not mentioned")")
             })
         }
-    }
-
-    func convertIntoData(image: UIImage) -> Data? {
-        return image.jpegData(compressionQuality: 1.0)
     }
 
     override func didReceiveMemoryWarning() {
