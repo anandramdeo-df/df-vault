@@ -22,18 +22,18 @@
 		4157684A21AFAFAA0062BCB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4157684921AFAFAA0062BCB7 /* Assets.xcassets */; };
 		4157684D21AFAFAA0062BCB7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4157684B21AFAFAA0062BCB7 /* LaunchScreen.storyboard */; };
 		41A83F3821B10F560082C5A9 /* DocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A83F3721B10F560082C5A9 /* DocumentViewController.swift */; };
-		41AFC25F21CB5E0400BAA99A /* DFAPIFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41AFC25E21CB5E0400BAA99A /* DFAPIFramework.framework */; };
-		41AFC26021CB5E0400BAA99A /* DFAPIFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 41AFC25E21CB5E0400BAA99A /* DFAPIFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		41F51F6621CBD1F20046885B /* DFAPIFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41F51F6521CBD1F20046885B /* DFAPIFramework.framework */; };
+		41F51F6721CBD1F20046885B /* DFAPIFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 41F51F6521CBD1F20046885B /* DFAPIFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		41AFC26121CB5E0500BAA99A /* Embed Frameworks */ = {
+		41F51F6821CBD1F20046885B /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				41AFC26021CB5E0400BAA99A /* DFAPIFramework.framework in Embed Frameworks */,
+				41F51F6721CBD1F20046885B /* DFAPIFramework.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -58,7 +58,7 @@
 		4157684C21AFAFAA0062BCB7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4157684E21AFAFAA0062BCB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41A83F3721B10F560082C5A9 /* DocumentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentViewController.swift; sourceTree = "<group>"; };
-		41AFC25E21CB5E0400BAA99A /* DFAPIFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DFAPIFramework.framework; sourceTree = "<group>"; };
+		41F51F6521CBD1F20046885B /* DFAPIFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DFAPIFramework.framework; sourceTree = "<group>"; };
 		A26D0CB98A8922F0979B1E6E /* Pods_DFVaultExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DFVaultExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEE9701BF8FB1FDB1C648D21 /* Pods-DFVaultExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DFVaultExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DFVaultExample/Pods-DFVaultExample.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -68,7 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41AFC25F21CB5E0400BAA99A /* DFAPIFramework.framework in Frameworks */,
+				41F51F6621CBD1F20046885B /* DFAPIFramework.framework in Frameworks */,
 				283CFBD78A9E88E71CD8EEFA /* Pods_DFVaultExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -100,7 +100,7 @@
 		4157683621AFAFA80062BCB7 = {
 			isa = PBXGroup;
 			children = (
-				41AFC25E21CB5E0400BAA99A /* DFAPIFramework.framework */,
+				41F51F6521CBD1F20046885B /* DFAPIFramework.framework */,
 				4157684121AFAFA80062BCB7 /* DFVaultExample */,
 				4157684021AFAFA80062BCB7 /* Products */,
 				3ECB4DFC895080E04B98F7A7 /* Frameworks */,
@@ -154,7 +154,7 @@
 				4157683C21AFAFA80062BCB7 /* Frameworks */,
 				4157683D21AFAFA80062BCB7 /* Resources */,
 				13904333290695CA45B50C17 /* [CP] Embed Pods Frameworks */,
-				41AFC26121CB5E0500BAA99A /* Embed Frameworks */,
+				41F51F6821CBD1F20046885B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -422,7 +422,7 @@
 			baseConfigurationReference = CEE9701BF8FB1FDB1C648D21 /* Pods-DFVaultExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = M8A7BYS443;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -436,6 +436,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ranosys.DFVaultExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = RanosysWildcardDev;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -446,7 +447,8 @@
 			baseConfigurationReference = 13BFEDA198E495606A0B5081 /* Pods-DFVaultExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = M8A7BYS443;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -460,6 +462,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ranosys.DFVaultExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = RanosysWildcard;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
