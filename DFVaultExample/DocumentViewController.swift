@@ -8,7 +8,6 @@
 
 import UIKit
 import DFDocument
-import DFAPIFramework
 
 class DocumentViewController: UIViewController {
 
@@ -24,68 +23,7 @@ class DocumentViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.openViewWithConfiguration()
 
-        if let uploadData = assetData {
-            frontImageView.image = frontImage ?? UIImage()
-            backImageView.image = backImage ?? UIImage()
-
-            var mediaArray = [MultipartDataModal]()
-            if let imageData = frontImage?.resizeImageToUploadOnServer(maxSizeInKB: 5000) {
-                mediaArray.append(MultipartDataModal.init(type: .image, fileName: "front_image", data: imageData))
-            }
-
-            if let img = backImage {
-                let imageData = img.resizeImageToUploadOnServer(maxSizeInKB: 5000)
-                mediaArray.append(MultipartDataModal.init(type: .image, fileName: "back_image", data: imageData))
-            }
-
-            let activityIndicator = UIView().showActivity()
-            self.view.addSubview(activityIndicator)
-
-            ConnectionManager.instance.getOCRResultFromImage(multipartDataArray: mediaArray, assetSubTypeName: uploadData["asset_type"] as! String, success: { (response) in
-                activityIndicator.removeFromSuperview()
-
-                if let responseObj = response as? [String: Any] {
-                    self.requestForPostScannedData(parameters: responseObj, assetData: uploadData)
-                }
-            }, failure: { (error) in
-                activityIndicator.removeFromSuperview()
-
-            })
-
-        }
-    }
-    
-    func requestForPostScannedData(parameters: [String: Any], assetData: [String: Any]) {
-        self.view.endEditing(true)
-       
-        if let data = parameters["data"] as? [String: Any] , var par = data["properties"] as? [String: Any], let assetType =  assetData["asset_type"] as? String {
-            par["geo_latitude"] = "26.778544149326056" as AnyObject
-            par["geo_longitude"] = "75.84157027980591" as AnyObject
-            par["asset_type"] = assetType
-            par["is_right_to_work"] = false as AnyObject
-
-            ConnectionManager.instance.addUpdateAssetDetail(assetSubTypeParent: "identity", assetDetailId: nil, parametersDict: par as [String : AnyObject], success: { response in
-                
-                if let successMessage = response?.value(forKey: "message") as? String {
-                    print(successMessage)
-
-                    let alert =  UIAlertController.init(title: "Success", message: successMessage, preferredStyle: .alert)
-                    let okAction = UIAlertAction.init(title: "Ok", style: .default, handler: nil)
-
-                    alert.addAction(okAction)
-                    self.navigationController?.present(alert, animated: true, completion: nil)
-
-                }
-            }, failure: { error in
-                
-                if let errorInfo = error?.userInfo {
-                    print(errorInfo)
-                }
-                print("Error: \(error?.localizedDescription ?? "error not mentioned")")
-            })
-        }
     }
 
     override func didReceiveMemoryWarning() {
