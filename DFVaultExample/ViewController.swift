@@ -19,7 +19,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var button5: UIButton!
     @IBOutlet weak var button6: UIButton!
     @IBOutlet weak var button7: UIButton!
-    @IBOutlet weak var addButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,11 +35,6 @@ class ViewController: UIViewController {
     
     func doCornerRadius(radius: CGFloat, bview: UIView) {
         bview.layer.cornerRadius = radius
-    }
-    
-    @IBAction func onClickAddButton(_ sender: Any) {
-        guard let vc = storyboard?.instantiateViewController(withIdentifier: "DocumentViewController") as? DocumentViewController else {return}
-        navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func ShareAssetByEmail(_ sender: Any) {
@@ -66,7 +60,7 @@ class ViewController: UIViewController {
         ShareAssetByEmail.getResult(success: { (response) in
             print(response)
         }, failure: { (error) in
-            print(error)
+            print(error?.userInfo ?? "Your api token is not valid")
         })
         
     }
@@ -89,7 +83,7 @@ class ViewController: UIViewController {
         AssetVault.getResult(success: { (response) in
             print(response)
         }, failure: { (error) in
-            print(error)
+            print(error?.userInfo ?? "Your api token is not valid")
         })
     }
     
@@ -108,7 +102,7 @@ class ViewController: UIViewController {
         shareWithMeObj.getResult(success: { (response) in
             print(response)
         }, failure: { (error) in
-            print(error)
+            print(error?.userInfo ?? "Your api token is not valid")
         })
     }
     
@@ -131,7 +125,7 @@ class ViewController: UIViewController {
         shareByMe.getResult(success: { (response) in
             print(response)
         }, failure: { (error) in
-            print(error)
+            print(error?.userInfo ?? "Your api token is not valid")
         })
     }
     
@@ -156,7 +150,7 @@ class ViewController: UIViewController {
         OrganisationRequestforAsset.getResult(success: { (response) in
             print(response)
         }, failure: { (error) in
-            print(error)
+            print(error?.userInfo ?? "Your api token is not valid")
         })
     }
     
@@ -177,7 +171,7 @@ class ViewController: UIViewController {
         OrganisationRequestforAllAsset.getResult(success: { (response) in
             print(response)
         }, failure: { (error) in
-            print(error)
+            print(error?.userInfo ?? "Your api token is not valid")
         })
     }
     
@@ -198,19 +192,18 @@ class ViewController: UIViewController {
         UploadAssetRequest.getResult(success: { (response) in
             print(response)
             self.unlockDFDocument(completionHandler: {[weak self] frontImage, backImage in
-                self?.navigateToDocVC(image1: frontImage, image2: backImage, assetData: assetData)
+                self?.navigateToDocVC(image1: frontImage, image2: backImage)
             })
         }, failure: { (error) in
-            print(error)
+            print(error?.userInfo ?? "Your api token is not valid")
         })
     }
     
     
-    func navigateToDocVC(image1: UIImage, image2: UIImage?, assetData: [String: Any]) {
+    func navigateToDocVC(image1: UIImage, image2: UIImage?) {
         guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "DocumentViewController") as? DocumentViewController else {return}
         vc.frontImage = image1
         vc.backImage = image2
-        vc.assetData = assetData
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -222,8 +215,7 @@ extension UIViewController {
         
         vc.getCapturedImages(success: { frontImage, backImage  in
             print(frontImage)
-            print(backImage)
-            
+            completionHandler(frontImage, backImage)
         }, failure: { (error) in
             print(error?.userInfo ?? "Your api token is not valid")
         })

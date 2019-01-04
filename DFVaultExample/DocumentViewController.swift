@@ -18,12 +18,16 @@ class DocumentViewController: UIViewController {
 
     var frontImage: UIImage?
     var backImage: UIImage?
-    var assetData: [String : Any]?
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        if let firstImage = frontImage {
+            if let backImage = backImage {
+                self.updateImages(image1: firstImage, image2: backImage)
+            }
+            updateImages(image1: firstImage, image2: backImage)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,7 +58,7 @@ class DocumentViewController: UIViewController {
             backImageView.layer.borderColor = UIColor.black.cgColor
             backImageView.image = image2
         }
-        uploadButton.isHidden = false
+     //   uploadButton.isHidden = false
     }
 
 }
