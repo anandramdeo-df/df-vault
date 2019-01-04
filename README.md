@@ -59,21 +59,14 @@ Instantiate the view with following code :-
          shareByMe.type = .shareByMeList
          shareByMe.userData = self.getJsondata(filename: "ShareByMe")
 
-        shareByMe.initialize(success: { [weak self] viewController in
-            DispatchQueue.main.async {
-                if let vc = viewController {
-                self?.present(vc, animated: true, completion: nil)
-                }
-                }
-            }, failure: { (error) in
-                print(error?.userInfo ?? "Your api token is not valid")
+         shareByMe.getResult(success: { (response) in
+            print(response)
+            self.unlockDFDocument(completionHandler: {[weak self] frontImage, backImage in
+                self?.navigateToDocVC(image1: frontImage, image2: backImage, assetData: assetData)
             })
-        
-        shareByMe.revokeEditAccessStatus = { revokeData, assetID, newDate in
-                print(revokeData)
-                print(assetID)
-                print(newDate)
-            }
+          }, failure: { (error) in
+            print(error)
+          })
 
 
 Output would be:
@@ -106,21 +99,14 @@ Output would be:
         shareByMe.editButtonColor = UIColor.blue
         shareByMe.userData = self.getJsondata(filename: "ShareByMe")
         
-        shareByMe.initialize(success: { [weak self] viewController in
-                DispatchQueue.main.async {
-                    if let vc = viewController {
-                    self?.present(vc, animated: true, completion: nil)
-                        }
-                        }
-                }, failure: { (error) in
-                    print(error?.userInfo ?? "Your api token is not valid")
-                    })
-                    
-        shareByMe.revokeEditAccessStatus = { revokeData, assetID, newDate in
-            print(revokeData)
-            print(assetID)
-            print(newDate)
-        }
+        shareByMe.getResult(success: { (response) in
+            print(response)
+            self.unlockDFDocument(completionHandler: {[weak self] frontImage, backImage in
+                self?.navigateToDocVC(image1: frontImage, image2: backImage, assetData: assetData)
+            })
+          }, failure: { (error) in
+            print(error)
+          })
 
 Updated UI output would be:
 <br>
