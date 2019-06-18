@@ -35,6 +35,11 @@ pod install
     <key>VaultAccessToken</key>
     <string>Enter your org&apos;s token</string>
     ```
+- Add an url of the server to communicate with the framework in your `Info.plist` file. Example:
+    ```xml
+    <key>server url</key>
+    <string>http://abc.com/api/</string>
+    ```
 
 - `import DFVault` in your `UIViewController` file where you want to use this feature.
 
