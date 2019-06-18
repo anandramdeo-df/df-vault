@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "DFVault"
-  spec.version      = "1.0.2"
+  spec.version      = "1.0.3"
   spec.summary      = "This SDK is created to gives you storage and sharing feature for your uploaded assets."
 
   # This description is used to generate tags and improve search results.
@@ -83,11 +83,11 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source       = { :http => 'https://github.com/anandramdeo-df/df-vault/releases/download/1.0.2/DFVault.zip' }
+  spec.source       = { :http => 'https://github.com/anandramdeo-df/df-vault/releases/download/1.0.3/DFVault.zip' }
   
   spec.ios.deployment_target = '10.0'
   spec.ios.vendored_frameworks = 'DFVault.framework'
-  spec.swift_version = '4.0'
+  spec.swift_version = '4.2'
 
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
