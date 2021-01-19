@@ -147,8 +147,9 @@
 				4157683B21AFAFA80062BCB7 /* Sources */,
 				4157683C21AFAFA80062BCB7 /* Frameworks */,
 				4157683D21AFAFA80062BCB7 /* Resources */,
-				13904333290695CA45B50C17 /* [CP] Embed Pods Frameworks */,
 				41F51F6821CBD1F20046885B /* Embed Frameworks */,
+				F8BC6AF81F8126ED339A396D /* [CP] Embed Pods Frameworks */,
+				C61DA90B2DE9F02DC2B72D81 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -212,24 +213,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		13904333290695CA45B50C17 /* [CP] Embed Pods Frameworks */ = {
+		C61DA90B2DE9F02DC2B72D81 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-DFVaultExample/Pods-DFVaultExample-frameworks.sh",
-				"${PODS_ROOT}/DFDocument/DFDocument.framework",
-				"${PODS_ROOT}/DFVault/DFVault.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DFVaultExample/Pods-DFVaultExample-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DFDocument.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DFVault.framework",
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DFVaultExample/Pods-DFVaultExample-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DFVaultExample/Pods-DFVaultExample-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DFVaultExample/Pods-DFVaultExample-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DD0EB35802A19D182616822C /* [CP] Check Pods Manifest.lock */ = {
@@ -248,6 +246,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F8BC6AF81F8126ED339A396D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DFVaultExample/Pods-DFVaultExample-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DFVaultExample/Pods-DFVaultExample-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DFVaultExample/Pods-DFVaultExample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
